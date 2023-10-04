@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/login_screen.dart';
+//import 'android\lib\homescreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +13,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+  '/login': (context) => const LoginScreen(),
+  //'/homescreen': (context) => HomeScreen(),
+  // Adicione outras rotas aqui, se necessário
+},
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.

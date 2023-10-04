@@ -129,6 +129,27 @@ class _LoginFormState extends State<LoginForm> {
               ],
             ),
             const SizedBox(height: 16.0),
+            // Botão "Entrar" com a cor #1673FA e centralizado
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  // Implementar a lógica para o botão "Entrar" aqui.
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF1673FA), // Cor "#1673FA"
+                  minimumSize: const Size(200.0, 50.0), // Altura e largura do botão
+                ),
+                child: const Text(
+                  'Entrar',
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 16.0),
             Center(
               child: Column(
                 children: [

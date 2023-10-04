@@ -12,7 +12,7 @@ class FreshStart extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'FreshStart',
-      home: HomeScreen(),
+      home: const HomeScreen(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
