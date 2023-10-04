@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:freshstart/homescreen.dart';
 
 void main() {
   runApp(const LoginScreen());
@@ -134,6 +135,10 @@ class _LoginFormState extends State<LoginForm> {
               child: ElevatedButton(
                 onPressed: () {
                   // Implementar a lógica para o botão "Entrar" aqui.
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF1673FA), // Cor "#1673FA"
