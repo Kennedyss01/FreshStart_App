@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fresh_start/homescreen.dart';
+import 'package:freshstart/homescreen.dart';
+
 
 void main() {
   runApp(const FreshStart());
