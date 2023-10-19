@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freshstart/homescreen.dart';
+import 'package:freshstart/screens/register_screen1.dart';
 
 void main() {
   runApp(const LoginScreen());
@@ -37,7 +38,7 @@ class _LoginFormState extends State<LoginForm> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 60.0), // Espaço entre o início da tela e o texto "FreshStart"
+            const SizedBox(height: 50.0),
             const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -46,7 +47,7 @@ class _LoginFormState extends State<LoginForm> {
                   style: TextStyle(
                     fontSize: 48.0,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF1673FA), // Cor "#1673FA"
+                    color: Color(0xFF1673FA),
                   ),
                 ),
                 SizedBox(height: 8.0),
@@ -59,7 +60,7 @@ class _LoginFormState extends State<LoginForm> {
                 ),
               ],
             ),
-            const SizedBox(height: 24.0), // Espaço entre os títulos e os campos
+            const SizedBox(height: 24.0),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -115,7 +116,6 @@ class _LoginFormState extends State<LoginForm> {
                 ),
                 TextButton(
                   onPressed: () {
-                    // Implementar a lógica para o botão "Esqueceu a Senha" aqui.
                   },
                   child: RichText(
                     text: const TextSpan(
@@ -130,19 +130,18 @@ class _LoginFormState extends State<LoginForm> {
               ],
             ),
             const SizedBox(height: 16.0),
-            // Botão "Entrar" com a cor #1673FA e centralizado
+           
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                  // Implementar a lógica para o botão "Entrar" aqui.
                   Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()),
+                      MaterialPageRoute(builder: (context) => const HomeScreen()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF1673FA), // Cor "#1673FA"
-                  minimumSize: const Size(200.0, 50.0), // Altura e largura do botão
+                  backgroundColor: const Color(0xFF1673FA),
+                  minimumSize: const Size(200.0, 50.0), 
                 ),
                 child: const Text(
                   'Entrar',
@@ -169,7 +168,10 @@ class _LoginFormState extends State<LoginForm> {
                       ),
                       InkWell(
                         onTap: () {
-                          // Implemente a lógica para o link "Registre-se agora" aqui.
+                          Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Register1()),
+                          );
                         },
                         child: const Text(
                           'Registre-se agora',
@@ -190,9 +192,9 @@ class _LoginFormState extends State<LoginForm> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    width: 140.0, // A largura da linha
-                    height: 1.0,   // A altura da linha (pode ser ajustada conforme necessário)
-                    color: Colors.black, // Cor da linha
+                    width: 140.0, 
+                    height: 1.0,   
+                    color: Colors.black, 
                   ),
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8.0),
@@ -200,14 +202,14 @@ class _LoginFormState extends State<LoginForm> {
                       'ou',
                       style: TextStyle(
                         color: Colors.black,
-                        backgroundColor: Colors.white, // Cor do fundo do texto
+                        backgroundColor: Colors.white, 
                       ),
                     ),
                   ),
                   Container(
-                    width: 140.0, // A largura da linha
-                    height: 1.0,   // A altura da linha (pode ser ajustada conforme necessário)
-                    color: Colors.black, // Cor da linha
+                    width: 140.0, 
+                    height: 1.0,  
+                    color: Colors.black,
                   ),
                 ],
               ),
@@ -218,16 +220,16 @@ class _LoginFormState extends State<LoginForm> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      // Implementar a lógica para login com Facebook aqui.
+                     
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF0084F9), // Cor "#0084F9"
+                      backgroundColor: const Color(0xFF0084F9), 
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5.0),
                       ),
                       minimumSize: Size(
-                        MediaQuery.of(context).size.width, // Largura igual à tela
-                        60.0, // Altura desejada para o botão
+                        MediaQuery.of(context).size.width, 
+                        60.0, 
                       ),
                     ),
                     child: const Text('Login com Facebook'),
@@ -235,16 +237,16 @@ class _LoginFormState extends State<LoginForm> {
                   const SizedBox(height: 16.0),
                   ElevatedButton(
                     onPressed: () {
-                      // Implementar a lógica para login com Google aqui.
+                     
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF132F79), // Cor "#132F79"
+                      backgroundColor: const Color(0xFF132F79), 
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5.0),
                       ),
                       minimumSize: Size(
-                        MediaQuery.of(context).size.width, // Largura igual à tela
-                        60.0, // Altura desejada para o botão
+                        MediaQuery.of(context).size.width, 
+                        60.0, 
                       ),
                     ),
                     child: const Text('Login com Google'),
@@ -252,16 +254,16 @@ class _LoginFormState extends State<LoginForm> {
                   const SizedBox(height: 16.0),
                   ElevatedButton(
                     onPressed: () {
-                      // Implementar a lógica para login com Twitter aqui.
+                    
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF3AA0D0), // Cor "#3AA0D0"
+                      backgroundColor: const Color(0xFF3AA0D0),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5.0),
                       ),
                       minimumSize: Size(
-                        MediaQuery.of(context).size.width, // Largura igual à tela
-                        60.0, // Altura desejada para o botão
+                        MediaQuery.of(context).size.width, 
+                        60.0,
                       ),
                     ),
                     child: const Text('Login com Twitter'),
