@@ -63,7 +63,8 @@ flutter:
 
 
   assets:
-  - imagens/Successful_purchase.png
+  - images/Successful_purchase.png
+  - assets/user.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

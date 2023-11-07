@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:freshstart/homescreen.dart';
 import 'package:freshstart/screens/register_screen1.dart';
 
-void main() {
-  runApp(const LoginScreen());
-}
+// void main() {
+//   runApp(const LoginScreen());
+// }
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

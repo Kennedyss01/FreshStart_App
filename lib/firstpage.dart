@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:freshstart/screens/login_screen.dart';
 
-void main() => runApp(const MyApp());
+// void main() => runApp(const MyApp());
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+class FirstPage extends StatefulWidget {
+  const FirstPage({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
   _MyAppState createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
+class _MyAppState extends State<FirstPage> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
 
@@ -25,7 +26,9 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
     _animation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
 
     // Start the animation
-    _controller.forward();
+    _controller.forward().whenComplete(() {
+      Navigator.of(context).pushReplacementNamed('/loginscreen');
+    });
   }
 
   @override
@@ -49,6 +52,9 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
           ),
         ),
       ),
+      routes: {
+        '/loginscreen': (context) => const LoginScreen(),
+      },
     );
   }
 

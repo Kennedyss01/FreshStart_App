@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:freshstart/screens/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -15,24 +16,30 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         elevation: 1,
         backgroundColor: Colors.white,
-        title: const Center(
-          child: Text(
-            'FreshStart',
-            style: TextStyle(
-              color: Colors.blue,
-              fontWeight: FontWeight.bold,
-              fontStyle: FontStyle.italic,
+        title: const Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text(
+              'FreshStart',
+              style: TextStyle(
+                color: Colors.blue,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic,
+              ),
             ),
-          ),
+          ],
         ),
         leading: InkWell(
           onTap: () {
-            // Lead to profile
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ProfileScreen()),
+            );
           },
           child: Container(
             margin: const EdgeInsets.all(10.0),
             child: const CircleAvatar(
-              backgroundImage: AssetImage('user.png'),
+              backgroundImage: AssetImage('/user.png'),
             ),
           ),
         ),
@@ -60,7 +67,15 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       onPressed: () {
         buildBottomIconButton(icon, Colors.blue);
-
+        if(icon == Icons.home){
+          MaterialPageRoute(builder: (context) => const HomeScreen());
+        }else if(icon == Icons.search){
+          //caminho para pagina de pesquisa.
+        }else if(icon == Icons.notifications){
+          //caminho para página de pesquisa.
+        }else{
+          //caminho para mensagens.
+        }
       },
     );
   }
