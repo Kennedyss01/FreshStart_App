@@ -63,7 +63,7 @@ flutter:
 
 
   assets:
-  - images/Successful_purchase.png
+  - imagens/Successful_purchase.png
   - assets/user.png
 
 
