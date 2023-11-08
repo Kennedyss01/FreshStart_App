@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../homescreen.dart';
+import 'package:freshstart/screens/homescreen.dart';
 
 class RegisterSuccess extends StatelessWidget {
   const RegisterSuccess({Key? key}) : super(key: key);

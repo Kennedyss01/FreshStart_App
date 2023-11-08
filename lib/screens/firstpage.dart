@@ -42,7 +42,7 @@ class _MyAppState extends State<FirstPage> with SingleTickerProviderStateMixin {
               child: FadeTransition(
                 opacity: _animation, // Use the animation value for opacity
                 child: Image.asset(
-                  'assets/images/logo.png', // Substitua pelo caminho da sua imagem
+                  '/logo.png', // Substitua pelo caminho da sua imagem
                   width: 200, // Largura da imagem
                   height: 200, // Altura da imagem
                   fit: BoxFit.cover, // Modo de ajuste da imagem

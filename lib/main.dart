@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'firstpage.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:freshstart/screens/firstpage.dart';
+import 'package:freshstart/screens/login_screen.dart';
 
 
 void main() {
@@ -13,17 +15,23 @@ class FreshStart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/firstpage',
-      routes: {
-        '/firstpage': (context) => const FirstPage(),
-      },
+      // initialRoute: '/loginscreen',
+      // routes: {
+      //   '/loginscreen': (context) => const LoginScreen(),
+      // },
+
+      debugShowCheckedModeBanner: false,
 
       theme: ThemeData(
         primarySwatch: Colors.blue,
         brightness: Brightness.light,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      debugShowCheckedModeBanner: false,
+
+      initialRoute: '/loginscreen',
+      routes: {
+        '/loginscreen': (context) => const LoginScreen(),
+      },
     );
   }
 }

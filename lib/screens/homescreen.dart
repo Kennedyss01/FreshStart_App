@@ -43,7 +43,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
-
       ),
       bottomNavigationBar: BottomAppBar(
         child: Row(
@@ -56,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-    );
+    ) ;
   }
 
   Widget buildBottomIconButton(IconData icon, Color color) {

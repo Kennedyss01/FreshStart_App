@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:freshstart/homescreen.dart';
+import 'package:freshstart/screens/homescreen.dart';
 import 'package:freshstart/screens/register_screen1.dart';
 
 // void main() {
