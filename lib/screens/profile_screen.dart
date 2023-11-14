@@ -27,7 +27,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             PopupMenuButton<String>(
-              icon: Icons.,
+              icon: const Icon (
+                Icons.more_horiz,
+                color: Colors.black45,
+                size: 30,
+              ),
               itemBuilder: (BuildContext context) {
                 return <PopupMenuEntry<String>>[
                   const PopupMenuItem<String>(
@@ -63,6 +67,46 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
       ),
+
+      body: Column(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.white,
+                  Colors.white38
+                ],
+              ),
+            ),
+          ),
+          const ListTile(
+            leading: CircleAvatar(
+              radius: 30,
+              backgroundImage: AssetImage('/user.png'),
+            ),
+            title: Text(
+                "Nome de Usuário"
+            ),
+            subtitle: Text(
+                "Descrição do Usuário"
+            ),
+          ),
+          const Divider(),
+          const Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Text(
+              "Conteúdo do perfil",
+              style: TextStyle(
+                fontSize: 20
+              ),
+            ),/
+          ),
+        ],
+      ),
+
       bottomNavigationBar: BottomAppBar(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
