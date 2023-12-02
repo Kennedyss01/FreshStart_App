@@ -1,51 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:freshstart/screens/login_screen.dart';
 
-// void main() => runApp(const MyApp());
-
 class FirstPage extends StatefulWidget {
   const FirstPage({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _MyAppState createState() => _MyAppState();
 }
 
-class _MyAppState extends State<FirstPage> with SingleTickerProviderStateMixin {
+class _MyAppState extends State<FirstPage>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
+  bool _hasNavigated = false;
 
   @override
   void initState() {
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 2), // Duration of the fade animation
+      duration: const Duration(seconds: 2),
     );
 
     _animation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
 
-    // Start the animation
     _controller.forward().whenComplete(() {
-      Navigator.of(context).pushReplacementNamed('/loginscreen');
+      // Set the flag when the animation completes
+      setState(() {
+        _hasNavigated = true;
+      });
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    if (!_hasNavigated) {
+      // Navigate to login screen when the flag is false
+      Navigator.of(context).pushReplacementNamed('/loginscreen');
+    }
+
     return MaterialApp(
       home: Scaffold(
         body: Center(
           child: Container(
-            color: const Color(0xFF1673FA), // Cor de fundo
+            color: const Color(0xFF1673FA),
             child: Center(
               child: FadeTransition(
-                opacity: _animation, // Use the animation value for opacity
+                opacity: _animation,
                 child: Image.asset(
-                  '/logo.png', // Substitua pelo caminho da sua imagem
-                  width: 200, // Largura da imagem
-                  height: 200, // Altura da imagem
-                  fit: BoxFit.cover, // Modo de ajuste da imagem
+                  'assets/logo.png', // Assuming the image is in the assets folder
+                  width: 200,
+                  height: 200,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
@@ -60,7 +66,7 @@ class _MyAppState extends State<FirstPage> with SingleTickerProviderStateMixin {
 
   @override
   void dispose() {
-    _controller.dispose(); // Dispose the controller when the widget is removed from the tree
+    _controller.dispose();
     super.dispose();
   }
 }

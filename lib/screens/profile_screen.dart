@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freshstart/screens/homescreen.dart';
+import 'package:freshstart/screens/goalscreen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -12,135 +13,202 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 1,
-        backgroundColor: Colors.white,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
-              'FreshStart',
-              style: TextStyle(
-                color: Colors.blue,
-                fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.italic,
-              ),
-            ),
-            PopupMenuButton<String>(
-              icon: const Icon (
-                Icons.more_horiz,
-                color: Colors.black45,
-                size: 30,
-              ),
-              itemBuilder: (BuildContext context) {
-                return <PopupMenuEntry<String>>[
-                  const PopupMenuItem<String>(
-                    value: 'settings',
-                    child: Text('Settings'),
-                  ),
-                  const PopupMenuItem<String>(
-                    value: 'help',
-                    child: Text('Help'),
-                  ),
-                ];
-              },
-              onSelected: (String value) {
-                if (value == 'settings') {
-                  // Handle settings action
-                } else if (value == 'help') {
-                  // Handle help action
-                }
-              },
-            ),
-          ],
-        ),
-        leading: IconButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const HomeScreen()),
-            );
-          },
-          icon: const Icon(
-            Icons.arrow_back,
+      appBar: buildAppBar(),
+      body: buildBody(),
+      bottomNavigationBar: buildBottomAppBar(),
+    );
+  }
+
+  AppBar buildAppBar() {
+    return AppBar(
+      elevation: 1,
+      backgroundColor: Colors.white,
+      title: buildAppBarTitle(),
+      leading: buildAppBarLeading(),
+    );
+  }
+
+  Row buildAppBarTitle() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Text(
+          'FreshStart',
+          style: TextStyle(
             color: Colors.blue,
+            fontWeight: FontWeight.bold,
+            fontStyle: FontStyle.italic,
           ),
         ),
-      ),
-
-      body: Column(
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Colors.white,
-                  Colors.white38
-                ],
-              ),
-            ),
+        PopupMenuButton<String>(
+          icon: const Icon(
+            Icons.more_horiz,
+            color: Colors.black45,
+            size: 30,
           ),
-          const ListTile(
-            leading: CircleAvatar(
-              radius: 30,
-              backgroundImage: AssetImage('/user.png'),
-            ),
-            title: Text(
-                "Nome de Usuário"
-            ),
-            subtitle: Text(
-                "Descrição do Usuário"
-            ),
-          ),
-          const Divider(),
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text(
-              "Conteúdo do perfil",
-              style: TextStyle(
-                fontSize: 20
-              ),
-            ),/
-          ),
-        ],
-      ),
-
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            buildBottomIconButton(Icons.home, Colors.black45),
-            buildBottomIconButton(Icons.search, Colors.black45),
-            buildBottomIconButton(Icons.notifications, Colors.black45),
-            buildBottomIconButton(Icons.message, Colors.black45),
-          ],
+          itemBuilder: (BuildContext context) {
+            return <PopupMenuEntry<String>>[
+              buildPopupMenuItem('goal', Icons.calendar_month_rounded, 'Goal'),
+              buildPopupMenuItem('settings', Icons.settings, 'Settings'),
+              buildPopupMenuItem('security', Icons.security, 'Security'),
+              buildPopupMenuItem('edit profile', Icons.edit, 'Edit profile'),
+              buildPopupMenuItem('help', Icons.help, 'Help'),
+            ];
+          },
+          onSelected: (String value) {
+            handlePopupMenuSelection(value);
+          },
         ),
+      ],
+    );
+  }
+
+  IconButton buildAppBarLeading() {
+    return IconButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
+        );
+      },
+      icon: const Icon(
+        Icons.arrow_back,
+        color: Colors.blue,
       ),
     );
   }
 
-  Widget buildBottomIconButton(IconData icon, Color color) {
+  Widget buildBody() {
+    return Column(
+      children: [
+        buildProfileHeader(),
+        const ListTile(
+          title: Text("Nome de Usuário"),
+          subtitle: Text("Descrição do Usuário"),
+        ),
+        const Divider(),
+        const Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Text(
+            "Conteúdo do perfil",
+            style: TextStyle(
+              fontSize: 20,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Container buildProfileHeader() {
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Colors.white,
+            Colors.black54,
+          ],
+        ),
+      ),
+      height: 200, // Ajuste a altura conforme necessário
+      child: const Stack(
+        children: [
+          Positioned(
+            bottom: 16,
+            right: 16,
+            child: CircleAvatar(
+              radius: 50,
+              backgroundImage: AssetImage('assets/user.png'), // Substitua pelo caminho da sua imagem de perfil
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  BottomAppBar buildBottomAppBar() {
+    return BottomAppBar(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          buildBottomIconButton(Icons.home, Colors.black45),
+          buildBottomIconButton(Icons.search, Colors.black45),
+          buildBottomIconButton(Icons.notifications, Colors.black45),
+          buildBottomIconButton(Icons.message, Colors.black45),
+        ],
+      ),
+    );
+  }
+
+  IconButton buildBottomIconButton(IconData icon, Color color) {
     return IconButton(
       icon: Icon(
         icon,
         color: color,
       ),
       onPressed: () {
-        if (icon == Icons.home) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const HomeScreen()),
-          );
-        } else if (icon == Icons.search) {
-          // Navigate to the search page. Replace with your logic.
-        } else if (icon == Icons.notifications) {
-          // Navigate to the notifications page. Replace with your logic.
-        } else {
-          // Navigate to messages. Replace with your logic.
-        }
+        handleBottomIconButtonPress(icon);
       },
     );
+  }
+
+  PopupMenuItem<String> buildPopupMenuItem(String value, IconData icon, String text) {
+    return PopupMenuItem<String>(
+      value: value,
+      child: ListTile(
+        leading: Icon(icon),
+        title: Text(text),
+      ),
+    );
+  }
+
+  void handlePopupMenuSelection(String value) {
+    switch (value) {
+      case 'goal':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const GoalScreen()),
+        );
+      // Navigate to the goal screen. Replace with your logic.
+        break;
+      case 'settings':
+      // Navigate to the settings screen. Replace with your logic.
+        break;
+      case 'security':
+      // Navigate to the security screen. Replace with your logic.
+        break;
+      case 'edit profile':
+      // Navigate to the edit profile screen. Replace with your logic.
+        break;
+      case 'help':
+      // Navigate to the help screen. Replace with your logic.
+        break;
+      default:
+        break;
+    }
+  }
+
+  void handleBottomIconButtonPress(IconData icon) {
+    switch (icon) {
+      case Icons.home:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
+        );
+        break;
+      case Icons.search:
+      // Navigate to the search page. Replace with your logic.
+        break;
+      case Icons.notifications:
+      // Navigate to the notifications page. Replace with your logic.
+        break;
+      case Icons.message:
+      // Navigate to the messages page. Replace with your logic.
+        break;
+      default:
+        break;
+    }
   }
 }
