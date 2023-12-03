@@ -36,15 +36,14 @@ class _GoalScreenState extends State<GoalScreen> {
   void showNotification(String title, String body) async {
     const AndroidNotificationDetails androidPlatformChannelSpecifics =
     AndroidNotificationDetails(
-      'your channel id',
       'your channel name',
       'your channel description',
       importance: Importance.max,
       priority: Priority.high,
       playSound: true,
       sound: RawResourceAndroidNotificationSound('notification_sound'),
-      largeIcon: DrawableResourceAndroidBitmap('@mipmap/ic_launcher'),
-      icon: '@mipmap/ic_launcher',
+      largeIcon: DrawableResourceAndroidBitmap('logo.png'),
+      icon: 'logo.png',
     );
     const NotificationDetails platformChannelSpecifics =
     NotificationDetails(android: androidPlatformChannelSpecifics);
@@ -87,7 +86,39 @@ class _GoalScreenState extends State<GoalScreen> {
             child: ListTile(
               title: Text(_goals[index].description),
               subtitle: Text(
-                  'Data Limite: ${DateFormat('dd/MM/yyyy').format(_goals[index].deadline)}'),
+                'Data Limite: ${DateFormat('dd/MM/yyyy').format(_goals[index].deadline)}',
+              ),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    icon: _goals[index].completed
+                        ? Icon(Icons.check, color: Colors.green)
+                        : Icon(Icons.check, color: Colors.grey),
+                    onPressed: () {
+                      // Handle goal completion
+                      setState(() {
+                        _goals[index].completed = !_goals[index].completed;
+                      });
+                      if (_goals[index].completed) {
+                        showNotification(
+                          'Meta Concluída',
+                          'Parabéns! Você concluiu uma meta!',
+                        );
+                      }
+                    },
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.delete, color: Colors.red),
+                    onPressed: () {
+                      // Handle goal deletion
+                      setState(() {
+                        _goals.removeAt(index);
+                      });
+                    },
+                  ),
+                ],
+              ),
             ),
           );
         },
@@ -97,6 +128,8 @@ class _GoalScreenState extends State<GoalScreen> {
 
   void _showAddGoalDialog(BuildContext context) {
     DateTime selectedDate = DateTime.now();
+    String description = '';
+    bool dateSelected = false;
 
     showDialog(
       context: context,
@@ -105,8 +138,11 @@ class _GoalScreenState extends State<GoalScreen> {
           title: const Text('Adicionar Meta'),
           content: Column(
             children: <Widget>[
-              const TextField(
-                decoration: InputDecoration(labelText: 'Descrição'),
+              TextField(
+                decoration: const InputDecoration(labelText: 'Descrição'),
+                onChanged: (value) {
+                  description = value;
+                },
               ),
               const SizedBox(height: 16),
               Row(
@@ -125,11 +161,19 @@ class _GoalScreenState extends State<GoalScreen> {
                       if (pickedDate != null && pickedDate != selectedDate) {
                         setState(() {
                           selectedDate = pickedDate;
+                          dateSelected = true;
                         });
                       }
                     },
                     child: const Text('Escolher Data'),
                   ),
+                  const SizedBox(width: 8),
+                  // Display the selected date conditionally
+                  if (dateSelected)
+                    Text(
+                      'Selecionado: ${DateFormat('dd/MM/yyyy').format(selectedDate)}',
+                      style: TextStyle(fontSize: 14),
+                    ),
                 ],
               ),
             ],
@@ -143,11 +187,16 @@ class _GoalScreenState extends State<GoalScreen> {
             ),
             TextButton(
               onPressed: () {
+                if (!dateSelected) {
+                  // Handle case where the user hasn't selected a date
+                  return;
+                }
+
                 // Adicionar lógica para criar a meta aqui
                 // Criar uma instância de Goal com os dados informados
                 Goal newGoal = Goal(
-                  description: 'Descrição da Meta', // Substituir pela descrição do TextField
-                  deadline: selectedDate, // Utilizar a data escolhida
+                  description: description,
+                  deadline: selectedDate,
                 );
 
                 // Adicionar a nova meta à lista de metas
@@ -172,6 +221,11 @@ class _GoalScreenState extends State<GoalScreen> {
 class Goal {
   final String description;
   final DateTime deadline;
+  bool completed;
 
-  Goal({required this.description, required this.deadline});
+  Goal({
+    required this.description,
+    required this.deadline,
+    this.completed = false,
+  });
 }
