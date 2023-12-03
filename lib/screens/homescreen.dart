@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freshstart/screens/profile_screen.dart';
+import 'package:freshstart/screens/searchscreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -65,17 +66,33 @@ class _HomeScreenState extends State<HomeScreen> {
         color: color,
       ),
       onPressed: () {
-        buildBottomIconButton(icon, Colors.blue);
-        if(icon == Icons.home){
-          MaterialPageRoute(builder: (context) => const HomeScreen());
-        }else if(icon == Icons.search){
-          //caminho para pagina de pesquisa.
-        }else if(icon == Icons.notifications){
-          //caminho para página de pesquisa.
-        }else{
-          //caminho para mensagens.
-        }
+        handleBottomIconButtonPress(icon);
       },
     );
+  }
+
+  void handleBottomIconButtonPress(IconData icon) {
+    switch (icon) {
+      case Icons.home:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
+        );
+        break;
+      case Icons.search:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const SearchScreen()),
+        );
+        break;
+      case Icons.notifications:
+      // Navigate to the notifications page. Replace with your logic.
+        break;
+      case Icons.message:
+      // Navigate to the messages page. Replace with your logic.
+        break;
+      default:
+        break;
+    }
   }
 }

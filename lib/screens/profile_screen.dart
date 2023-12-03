@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freshstart/screens/homescreen.dart';
 import 'package:freshstart/screens/goalscreen.dart';
+import 'package:freshstart/screens/searchscreen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -199,7 +200,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
         );
         break;
       case Icons.search:
-      // Navigate to the search page. Replace with your logic.
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const SearchScreen()),
+        );
         break;
       case Icons.notifications:
       // Navigate to the notifications page. Replace with your logic.
