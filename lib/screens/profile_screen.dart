@@ -218,7 +218,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
         );
         break;
       case Icons.search:
-      // Navigate to the search page. Replace with your logic.
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const SearchScreen()),
+        );
         break;
       case Icons.notifications:
       // Navigate to the notifications page. Replace with your logic.
