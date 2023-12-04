@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Text(
-              'FreshStart',
+              'freshStart',
               style: TextStyle(
                 color: Colors.blue,
                 fontWeight: FontWeight.bold,

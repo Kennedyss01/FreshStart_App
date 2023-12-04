@@ -6,6 +6,7 @@ class GoalScreen extends StatefulWidget {
   const GoalScreen({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _GoalScreenState createState() => _GoalScreenState();
 }
 
@@ -93,8 +94,8 @@ class _GoalScreenState extends State<GoalScreen> {
                 children: [
                   IconButton(
                     icon: _goals[index].completed
-                        ? Icon(Icons.check, color: Colors.green)
-                        : Icon(Icons.check, color: Colors.grey),
+                        ? const Icon(Icons.check, color: Colors.green)
+                        : const Icon(Icons.check, color: Colors.grey),
                     onPressed: () {
                       // Handle goal completion
                       setState(() {
@@ -109,7 +110,7 @@ class _GoalScreenState extends State<GoalScreen> {
                     },
                   ),
                   IconButton(
-                    icon: Icon(Icons.delete, color: Colors.red),
+                    icon: const Icon(Icons.delete, color: Colors.red),
                     onPressed: () {
                       // Handle goal deletion
                       setState(() {
@@ -172,7 +173,7 @@ class _GoalScreenState extends State<GoalScreen> {
                   if (dateSelected)
                     Text(
                       'Selecionado: ${DateFormat('dd/MM/yyyy').format(selectedDate)}',
-                      style: TextStyle(fontSize: 14),
+                      style: const TextStyle(fontSize: 14),
                     ),
                 ],
               ),

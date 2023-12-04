@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:freshstart/screens/Security_Screen.dart';
+import 'package:freshstart/screens/about_screen.dart';
+import 'package:freshstart/screens/editProfile_screen.dart';
 import 'package:freshstart/screens/homescreen.dart';
 import 'package:freshstart/screens/goalscreen.dart';
+import 'package:freshstart/screens/settings_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _ProfileScreenState createState() => _ProfileScreenState();
 }
 
@@ -52,7 +57,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               buildPopupMenuItem('settings', Icons.settings, 'Settings'),
               buildPopupMenuItem('security', Icons.security, 'Security'),
               buildPopupMenuItem('edit profile', Icons.edit, 'Edit profile'),
-              buildPopupMenuItem('help', Icons.help, 'Help'),
+              buildPopupMenuItem('about', Icons.help, 'about'),
             ];
           },
           onSelected: (String value) {
@@ -174,16 +179,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
       // Navigate to the goal screen. Replace with your logic.
         break;
       case 'settings':
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const SettingsScreen()),
+          );
       // Navigate to the settings screen. Replace with your logic.
         break;
       case 'security':
+      Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const SecurityScreen()),
+          );
       // Navigate to the security screen. Replace with your logic.
         break;
       case 'edit profile':
-      // Navigate to the edit profile screen. Replace with your logic.
+      Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => EditProfileScreen()),
+          );
         break;
-      case 'help':
-      // Navigate to the help screen. Replace with your logic.
+      case 'about':
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const AboutScreen()),
+          );
         break;
       default:
         break;
