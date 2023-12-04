@@ -4,6 +4,7 @@ import 'package:freshstart/screens/about_screen.dart';
 import 'package:freshstart/screens/editProfile_screen.dart';
 import 'package:freshstart/screens/homescreen.dart';
 import 'package:freshstart/screens/goalscreen.dart';
+import 'package:freshstart/screens/searchscreen.dart';
 import 'package:freshstart/screens/settings_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
