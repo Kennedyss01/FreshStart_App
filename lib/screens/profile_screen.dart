@@ -7,6 +7,10 @@ import 'package:freshstart/screens/goalscreen.dart';
 import 'package:freshstart/screens/searchscreen.dart';
 import 'package:freshstart/screens/settings_screen.dart';
 
+import 'chatscreen.dart';
+import 'messagelobbyscreen.dart';
+import 'notificationsscreen.dart';
+
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
@@ -225,10 +229,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
         );
         break;
       case Icons.notifications:
-      // Navigate to the notifications page. Replace with your logic.
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => NotificationsScreen()),
+        );
         break;
       case Icons.message:
-      // Navigate to the messages page. Replace with your logic.
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const MessageLobbyScreen()),
+        );
         break;
       default:
         break;

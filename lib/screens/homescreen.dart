@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:freshstart/screens/notificationsscreen.dart';
 import 'package:freshstart/screens/profile_screen.dart';
 import 'package:freshstart/screens/searchscreen.dart';
+
+import 'chatscreen.dart';
+import 'messagelobbyscreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -86,10 +90,16 @@ class _HomeScreenState extends State<HomeScreen> {
         );
         break;
       case Icons.notifications:
-      // Navigate to the notifications page. Replace with your logic.
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => NotificationsScreen()),
+        );
         break;
       case Icons.message:
-      // Navigate to the messages page. Replace with your logic.
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const MessageLobbyScreen()),
+        );
         break;
       default:
         break;

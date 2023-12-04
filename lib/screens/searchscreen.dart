@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'homescreen.dart';
+import 'messagelobbyscreen.dart';
+import 'notificationsscreen.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -59,6 +62,60 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
         ],
       ),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            buildBottomIconButton(Icons.home, Colors.black45),
+            buildBottomIconButton(Icons.search, Colors.blue),
+            buildBottomIconButton(Icons.notifications, Colors.black45),
+            buildBottomIconButton(Icons.message, Colors.black45),
+          ],
+        ),
+      ),
     );
+  }
+
+  IconButton buildBottomIconButton(IconData icon, Color color) {
+    return IconButton(
+      icon: Icon(
+        icon,
+        color: color,
+      ),
+      onPressed: () {
+        handleBottomIconButtonPress(icon);
+      },
+    );
+  }
+
+  void handleBottomIconButtonPress(IconData icon) {
+    switch (icon) {
+      case Icons.home:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
+        );
+        break;
+      case Icons.search:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const SearchScreen()),
+        );
+        break;
+      case Icons.notifications:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => NotificationsScreen()),
+        );
+        break;
+      case Icons.message:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const MessageLobbyScreen()),
+        );
+        break;
+      default:
+        break;
+    }
   }
 }
