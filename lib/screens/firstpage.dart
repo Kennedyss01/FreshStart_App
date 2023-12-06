@@ -49,8 +49,8 @@ class _MyAppState extends State<FirstPage>
                 opacity: _animation,
                 child: Image.asset(
                   'assets/logo.png', // Assuming the image is in the assets folder
-                  width: 200,
-                  height: 200,
+                  width: 100,
+                  height: 100,
                   fit: BoxFit.cover,
                 ),
               ),

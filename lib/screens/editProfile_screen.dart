@@ -104,7 +104,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               decoration: const InputDecoration(labelText: 'Número de Telefone'),
             ),
             
-            const SizedBox(height: 160.0),
+            const SizedBox(height: 16.0),
 
              Container(
               alignment: Alignment.center,

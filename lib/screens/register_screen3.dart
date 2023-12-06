@@ -63,9 +63,10 @@ class _Register3State extends State<Register3> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
+          child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            children: <Widget>[
               const SizedBox(height: 50.0),
               const Align(
                 alignment: Alignment.topRight,
@@ -95,7 +96,7 @@ class _Register3State extends State<Register3> {
                   ),
                 ),
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 40),
               const Text(
                 'Senha',
                 style: TextStyle(
@@ -113,7 +114,7 @@ class _Register3State extends State<Register3> {
                   errorMaxLines: 3,
                 ),
               ),
-              const SizedBox(height: 30.0),
+              const SizedBox(height: 27.0),
               const Text(
                 'Repita a Senha',
                 style: TextStyle(
@@ -130,7 +131,7 @@ class _Register3State extends State<Register3> {
                   errorText: repeatPasswordError.isNotEmpty ? repeatPasswordError : null,
                 ),
               ),
-              const SizedBox(height: 225.0),
+              const SizedBox(height: 200.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -162,7 +163,7 @@ class _Register3State extends State<Register3> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20.0),
+              const SizedBox(height: 18.0),
               Align(
                 alignment: Alignment.center,
                 child: FractionallySizedBox(
@@ -171,7 +172,7 @@ class _Register3State extends State<Register3> {
                     onPressed: validatePasswordFields,
                     style: ElevatedButton.styleFrom(
                       textStyle: buttonTextStyle,
-                      minimumSize: const Size(double.infinity, 50.0),
+                      minimumSize: const Size(double.infinity, 40.0),
                     ),
                     child: const Text("continuar"),
                   ),
@@ -180,6 +181,7 @@ class _Register3State extends State<Register3> {
             ],
           ),
         ),
+      ),
       ),
     );
   }

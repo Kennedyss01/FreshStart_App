@@ -6,8 +6,11 @@ import 'package:url_launcher/url_launcher.dart';
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
 
+
+
   @override
   Widget build(BuildContext context) {
+    var crossAxisAlignment;
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
@@ -28,10 +31,11 @@ class AboutScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
             const Center(
               child: Padding(
                 padding: EdgeInsets.all(16.0),
@@ -61,7 +65,7 @@ class AboutScreen extends StatelessWidget {
                 color: Colors.blue,
               ),
             ),
-            
+
             // Center the following text
             const Center(
               child: Padding(
@@ -75,9 +79,9 @@ class AboutScreen extends StatelessWidget {
                 ),
               ),
             ),
-            
+
             const SizedBox(height: 200),
-            
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -114,12 +118,12 @@ class AboutScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 10),
-            
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  'assets/whatsappLogo.png', 
+                  'assets/whatsappLogo.png',
                   width: 30,
                   height: 30,
                 ),
@@ -151,7 +155,8 @@ class AboutScreen extends StatelessWidget {
                 ),
               ],
             ),
-          ],
+            ],
+        ),
         ),
       ),
     );

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:freshstart/screens/homescreen.dart';
 import 'package:freshstart/screens/register_screen1.dart';
 
+
+
 // void main() {
 //   runApp(const LoginScreen());
 // }
@@ -33,11 +35,13 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Padding(
+      child: SingleChildScrollView(
+        child: Padding (
         padding: const EdgeInsets.all(20.0),
+
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: <Widget>[
             const SizedBox(height: 50.0),
             const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -192,7 +196,7 @@ class _LoginFormState extends State<LoginForm> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    width: 140.0, 
+                    width: 110.0,
                     height: 1.0,   
                     color: Colors.black, 
                   ),
@@ -207,7 +211,7 @@ class _LoginFormState extends State<LoginForm> {
                     ),
                   ),
                   Container(
-                    width: 140.0, 
+                    width: 110.0,
                     height: 1.0,  
                     color: Colors.black,
                   ),
@@ -220,7 +224,7 @@ class _LoginFormState extends State<LoginForm> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                     
+
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF0084F9), 
@@ -229,7 +233,7 @@ class _LoginFormState extends State<LoginForm> {
                       ),
                       minimumSize: Size(
                         MediaQuery.of(context).size.width, 
-                        60.0, 
+                        40.0,
                       ),
                     ),
                     child: const Text('Login com Facebook'),
@@ -246,7 +250,7 @@ class _LoginFormState extends State<LoginForm> {
                       ),
                       minimumSize: Size(
                         MediaQuery.of(context).size.width, 
-                        60.0, 
+                        40.0,
                       ),
                     ),
                     child: const Text('Login com Google'),
@@ -263,7 +267,7 @@ class _LoginFormState extends State<LoginForm> {
                       ),
                       minimumSize: Size(
                         MediaQuery.of(context).size.width, 
-                        60.0,
+                        40.0,
                       ),
                     ),
                     child: const Text('Login com Twitter'),
@@ -272,6 +276,7 @@ class _LoginFormState extends State<LoginForm> {
               ),
             ),
           ],
+        ),
         ),
       ),
     );

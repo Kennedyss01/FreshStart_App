@@ -11,9 +11,10 @@ class RegisterSuccess extends StatelessWidget {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
+          child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
+            children: <Widget>[
               const SizedBox(height: 40.0),
               const Align(
                 alignment: Alignment.topRight,
@@ -82,6 +83,7 @@ class RegisterSuccess extends StatelessWidget {
             ],
           ),
         ),
+      ),
       ),
     );
   }

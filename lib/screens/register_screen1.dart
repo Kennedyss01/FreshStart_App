@@ -24,9 +24,10 @@ class _Register1State extends State<Register1> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
+          child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            children: <Widget>[
               const SizedBox(height: 50.0),
               const Align(
                 alignment: Alignment.topRight,
@@ -48,7 +49,7 @@ class _Register1State extends State<Register1> {
                   color: Colors.grey.withOpacity(0.8),
                 ),
               ),
-              const SizedBox(height: 125),
+              const SizedBox(height: 110),
               const Text(
                 'Nome',
                 style: TextStyle(
@@ -71,7 +72,7 @@ class _Register1State extends State<Register1> {
                     color: Colors.red,
                   ),
                 ),
-              const SizedBox(height: 250.0),
+              const SizedBox(height: 180.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -103,7 +104,7 @@ class _Register1State extends State<Register1> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20.0),
+              const SizedBox(height: 18.0),
               Align(
                 alignment: Alignment.center,
                 child: FractionallySizedBox(
@@ -126,13 +127,14 @@ class _Register1State extends State<Register1> {
                     },
                     style: ElevatedButton.styleFrom(
                       textStyle: buttonTextStyle,
-                      minimumSize: const Size(double.infinity, 50.0),
+                      minimumSize: const Size(double.infinity, 40.0),
                     ),
                     child: const Text("Continuar"),
                   ),
                 ),
               ),
             ],
+          ),
           ),
         ),
       ),

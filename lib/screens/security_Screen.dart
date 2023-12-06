@@ -24,9 +24,10 @@ class _SecurityScreenState extends State<SecurityScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
+      child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: <Widget>[
             ListTile(
               title: const Text('Trocar Senha'),
               onTap: () {
@@ -109,6 +110,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
           ],
         ),
       ),
+      ),
     );
   }
 }
@@ -122,6 +124,7 @@ void _showReleaseGesonelDialog(BuildContext context) {
         title: const Text('Gesonel Está Livre!'),
         content: SizedBox(
           height: 200, // ajuste conforme necessário
+
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

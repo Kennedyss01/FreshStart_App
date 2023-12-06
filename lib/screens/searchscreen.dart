@@ -36,6 +36,7 @@ class _SearchScreenState extends State<SearchScreen> {
       appBar: AppBar(
         title: Text('Search Screen'),
       ),
+
       body: Column(
         children: [
           Padding(

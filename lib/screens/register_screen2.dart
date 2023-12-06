@@ -56,10 +56,11 @@ class _Register2State extends State<Register2> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
+          child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 50.0),
+            children: <Widget>[
+              const SizedBox(height: 40.0),
               const Align(
                 alignment: Alignment.topRight,
                 child: Text(
@@ -88,7 +89,7 @@ class _Register2State extends State<Register2> {
                   ),
                 ),
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 40),
               const Text(
                 'Email',
                 style: TextStyle(
@@ -105,7 +106,7 @@ class _Register2State extends State<Register2> {
                   errorText: emailError.isNotEmpty ? emailError : null,
                 ),
               ),
-              const SizedBox(height: 30.0),
+              const SizedBox(height: 27.0),
               const Text(
                 'Repita o Email',
                 style: TextStyle(
@@ -122,7 +123,7 @@ class _Register2State extends State<Register2> {
                   errorText: repeatEmailError.isNotEmpty ? repeatEmailError : null,
                 ),
               ),
-              const SizedBox(height: 195.0),
+              const SizedBox(height: 185.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -171,6 +172,7 @@ class _Register2State extends State<Register2> {
               ),
             ],
           ),
+        ),
         ),
       ),
     );
